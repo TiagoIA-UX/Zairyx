@@ -30,7 +30,7 @@ O repositório **Zairyx** tem como objetivo:
 Para instalar e executar localmente:
 
 ```bash
-git clone https://github.com/seu-usuario/Zairyx.git
+git clone https://github.com/TiagoIA-UX/Zairyx.git
 cd Zairyx
 python launch.py
 ````
