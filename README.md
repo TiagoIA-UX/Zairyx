@@ -1,156 +1,69 @@
-Zairyx: A Amiga de IA para Organizar Arquivos, Finanças e Sustentabilidade
-Zairyx é uma assistente de inteligência artificial (IA) open-source, projetada para integrar-se aos gerenciadores de arquivos (Windows Explorer, Android, Mac, Linux) e empoderar usuários, especialmente jovens e adolescentes, a organizarem suas vidas digitais, gerenciarem finanças e adotarem práticas sustentáveis. Desenvolvida por Tiago Rocha, um comunicador sem conhecimento técnico, em colaboração com uma IA (Grok), a Zairyx prova que a tecnologia pode ser moldada por qualquer pessoa através de conversas naturais, sem necessidade de programação.
+ Zairyx
 
-Por Que a Zairyx?
-Imagine Maria, uma estudante de 17 anos de uma comunidade carente. Com a Zairyx, ela organiza seus arquivos escolares, descobre como economizar na mesada e aprende a fazer compostagem com sobras de alimentos. A Zairyx não é apenas uma ferramenta; é uma amiga que guia, educa e inspira, mostrando que a IA é acessível e pode transformar vidas. E se a sua empresa pudesse liderar essa transformação, conectando milhões de jovens a um futuro mais organizado, financeiramente consciente e sustentável?
+**Zairyx** é um _fork_ do projeto [Fooocus](https://github.com/lllyasviel/Fooocus), desenvolvido por [lllyasviel](https://github.com/lllyasviel). Este repositório é mantido com o intuito de facilitar personalizações, ajustes experimentais e integrações específicas para projetos derivados.
 
-Objetivos
-Organização Intuitiva de Arquivos: Usar busca semântica, dicas de organização e memorização para simplificar a gestão de arquivos.
-Educação Financeira: Analisar recibos, faturas, pagamentos e recebimentos, gerando relatórios e gráficos que ensinam gestão financeira.
-Educação Sustentável: Fornecer dicas personalizadas para reduzir o impacto ambiental, como compostagem para usuários de baixa renda, contribuindo para créditos de carbono corporativos.
-Inspiração para o Futuro: Mostrar que a IA é acessível, incentivando jovens a explorarem tecnologia sem barreiras técnicas.
-Benefícios para Usuários
-Jovens e Adolescentes: Organizam arquivos escolares, gerenciam mesadas e aprendem práticas sustentáveis, como reaproveitar sobras de alimentos.
-Profissionais: Gerenciam projetos, analisam finanças e adotam práticas sustentáveis no trabalho.
-Comunidades de Baixa Renda: Recebem dicas práticas para reduzir desperdício e custos, como compostagem e sopas nutritivas.
-Inspiração: A interação com a Zairyx, via Microsoft Copilot, mostra que qualquer pessoa pode usar IA para criar e inovar.
-Benefícios para Corporações
-Liderança em IA Acessível: Integre sua IA (ex.: Copilot, Gemini) ao Zairyx e democratize a tecnologia, posicionando sua empresa como pioneira em inovação inclusiva.
-Sustentabilidade: Use dados de redução de impacto para obter créditos de carbono, alinhando-se a metas globais de ESG.
-Educação e Inovação: Amplie sua plataforma educacional, oferecendo uma experiência contínua que empodera jovens globalmente.
-Imagem e Impacto: Seja a empresa que transforma vidas, conectando tecnologia, educação e sustentabilidade em um futuro promissor.
-Tecnologias
-Linguagem: Python
-Frameworks de IA: Hugging Face Transformers, Tesseract-OCR
-Agente Principal: Microsoft Copilot
-Automação No-Code: n8n
-API: FastAPI
-Gráficos: Matplotlib
-Banco de Dados: SQLite
-Ambiente: WSL 2 (Ubuntu 22.04), Docker
-IDE: Visual Studio Code
-Pré-requisitos
-Windows 11 com WSL 2 (Ubuntu 22.04)
-Docker e Docker Compose
-Python 3.8+
-GPU: AMD RX 580 8GB (ou NVIDIA RTX 4060 Ti para melhor suporte a IA)
-Instalação
-Configure o WSL 2 e Ubuntu:
-powershell
+> **Importante:** Este projeto respeita e segue integralmente as [políticas de licença](https://github.com/lllyasviel/Fooocus/blob/main/LICENSE) e uso estabelecidas pelo criador original. Todos os créditos referentes à concepção, desenvolvimento e autoria intelectual do sistema pertencem a **lllyasviel** e à comunidade original do Fooocus.
 
-Copiar
-# No Windows PowerShell
-wsl --install
-Instale o Docker no WSL 2:
-bash
+---
 
-Copiar
-sudo apt update
-sudo apt install docker.io docker-compose -y
-sudo usermod -aG docker $USER
-newgrp docker
-Configure o Docker (em /etc/docker/daemon.json):
-json
+## 📌 Sobre o Fooocus
 
-Copiar
-{
-  "default-ulimits": {
-    "nofile": {
-      "Name": "nofile",
-      "Hard": 65536,
-      "Soft": 65536
-    }
-  },
-  "storage-driver": "overlay2"
-}
-Reinicie o Docker:
-bash
+**Fooocus** é uma aplicação de geração de imagens baseada em modelos de difusão (_Stable Diffusion_) com foco na simplicidade e qualidade dos resultados. Inspirado por ferramentas como Midjourney, o sistema permite geração de imagens a partir de _prompts_ de texto com configurações otimizadas para uso por usuários não técnicos.
 
-Copiar
-sudo systemctl restart docker
-Instale as Dependências Python: Crie um arquivo requirements.txt com:
-plaintext
+---
 
-Copiar
-fastapi
-uvicorn
-transformers
-pytesseract
-torch
-pillow
-matplotlib
-sqlite3
-Instale:
-bash
+## 📁 Objetivo do Zairyx
 
-Copiar
-pip install -r requirements.txt
-Clone este Repositório e Rode a API:
-bash
+O repositório **Zairyx** tem como objetivo:
 
-Copiar
-git clone https://github.com/TiagoIA-ux/Zairyx-FileManager.git
-cd ai-file-manager
-python main.py
-Uso
-A API FastAPI, integrada ao Microsoft Copilot, oferece os seguintes endpoints:
+- Explorar possíveis integrações com sistemas personalizados (como webhooks, dashboards ou APIs);
+- Adaptar a interface ou configurações para uso em ambientes específicos;
+- Realizar testes controlados com parâmetros avançados de inferência;
+- Servir como base para estudo e aprendizado técnico.
 
-Busca Semântica: /search_files - Encontre arquivos com descrições naturais (ex.: "recibos de 2024").
-bash
+> Este repositório **não** visa substituir o repositório original e **não oferece suporte oficial** da equipe Fooocus. Para uso em produção ou atualizações oficiais, recomenda-se utilizar o repositório original.
 
-Copiar
-curl -X POST "http://localhost:8000/search_files" -d '{"query": "recibos de 2024"}' -H "Content-Type: application/json"
-Dicas de Organização: /organize_tips - Receba sugestões para organizar arquivos.
-bash
+---
 
-Copiar
-curl "http://localhost:8000/organize_tips"
-Memorização: /save_file_location e /recall_file - Salve e recupere localizações de arquivos.
-bash
+## 🚀 Instalação
 
-Copiar
-curl -X POST "http://localhost:8000/save_file_location" -d '{"name": "recibo_marco", "path": "data/finanças/recibo.jpg", "description": "Recibo de março"}' -H "Content-Type: application/json"
-curl "http://localhost:8000/recall_file?name=recibo_marco"
-Análise Financeira: /analyze_receipt - Extraia e categorize dados de recibos.
-bash
+Para instalar e executar localmente:
 
-Copiar
-curl -X POST "http://localhost:8000/analyze_receipt" -d '{"file_path": "data/finanças/recibo.jpg"}' -H "Content-Type: application/json"
-Relatório Financeiro: /financial_report - Gere relatórios e gráficos de gastos.
-bash
+```bash
+git clone https://github.com/seu-usuario/Zairyx.git
+cd Zairyx
+python launch.py
+````
 
-Copiar
-curl "http://localhost:8000/financial_report"
-Dicas Sustentáveis: /sustainability_tips - Receba dicas de redução de impacto ambiental.
-bash
+> Requisitos detalhados podem ser encontrados na [documentação do Fooocus](https://github.com/lllyasviel/Fooocus).
 
-Copiar
-curl "http://localhost:8000/sustainability_tips"
-Integração com Gerenciadores de Arquivos:
+---
 
-Configure o Samba para compartilhar a pasta data/finanças:
-bash
+## 📄 Licença
 
-Copiar
-sudo nano /etc/samba/smb.conf
-Adicione:
-text
+Este projeto é licenciado sob os termos da licença [MIT](https://opensource.org/licenses/MIT), em conformidade com o repositório original.
 
-Copiar
-[finanças]
-path = /home/<seu_usuario>/ai-file-manager/data/finanças
-writable = yes
-browsable = yes
-Reinicie o Samba:
-bash
+---
 
-Copiar
-sudo systemctl restart smbd
-Roadmap
- Configurar ambiente (WSL 2, Docker, Python).
- Desenvolver busca semântica, análise financeira e dicas sustentáveis (até 07/05/2025).
- Integrar com Windows Explorer, Android e Mac (até 25/05/2025).
- Testar com beta testers (até 06/07/2025).
- Preparar demo para corporações (até 20/07/2025).
-Contribuição
-Junte-se à nossa comunidade no GitHub! Abra issues ou envie pull requests para ajudar a moldar a Zairyx.
+## 🤝 Créditos
+
+* Projeto original por [@lllyasviel](https://github.com/lllyasviel)
+* Comunidade e contribuidores do [Fooocus](https://github.com/lllyasviel/Fooocus)
+* Este *fork* é mantido por \[Seu Nome ou Nome do Projeto]
+
+---
+
+## 📬 Contato
+
+Caso deseje contribuir ou conversar sobre possíveis integrações, você pode abrir uma *issue* neste repositório ou entrar em contato diretamente.
+
+---
+
+*Este é um projeto derivado com fins educacionais e de experimentação. Todo o conteúdo e méritos técnicos pertencem ao autor original.*
+
+```
+
+---
+
+Se desejar, posso ajustar o texto com os seus dados específicos (como nome, e-mail de contato, ou links para o seu site ou projeto Astro Zen Life). Deseja que eu personalize o rodapé com essas informações?
+```
